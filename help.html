@@ -1,0 +1,90 @@
+</pre><pre name="code" class="html"><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+    <HEAD>
+        <TITLE> New Document </TITLE>
+        <META NAME = "Generator"   CONTENT = "EditPlus">
+        <META NAME = "Author"      CONTENT = ""        >
+        <META NAME = "Keywords"    CONTENT = ""        >
+        <META NAME = "Description" CONTENT = ""        >
+    </HEAD>
+    <style type="text/css">
+        label{ color:#66ccff; font-size:20;   }
+        input{ height:20;font-size:10;padding:3}
+        td{ height:20}
+        tr{ background-color: #f9f9f9 }
+        td.title{ font-size:10;background-color: #EAEAEA; text-align:right}
+        td#ex{text-align:center }
+    </style> 
+    <BODY>
+        <br><label><caption><center>留言信息</center></caption></label><br>
+        <table width="410" border="0" align="center" cellpadding="4" cellspacing="1" bgcolor="#CCCCCC">
+        <form name="form" method="post" id="form">
+            <tr>
+                <td class="title">电子邮箱</td>
+                <td>
+                    <input name="email" type="text" id="email" value="" size="35" maxlength=50 class="write">
+                    <span style="font-size:8;color:red;vertical-align: top">*
+                </td>
+            </tr>
+            <tr> 
+                <td class="title">问题</td>
+                <td>
+                    <input name="title" type="text" class="write" id="title" size="35" maxLength=10>
+                    <span style="font-size:8;color:red;vertical-align: top">*
+                </td>
+            </tr>
+            <tr> 
+                <td class="title" valign="top">问题说明</td>
+                <td><textarea name="words" cols="50" rows="8" class="input1" id="words" 
+                              onKeyDown=gbcount(this.form.words,this.form.total,this.form.used,this.form.remain); 
+                              onKeyUp=gbcount(this.form.words,this.form.total,this.form.used,this.form.remain);></textarea>
+                    <span style="font-size:8;color:red;vertical-align: top">* 
+                </td>
+            </tr>
+            <tr> 
+                <td class="title">上传附件</td>
+                <td><input type="file" id="files" name="file" style="font-size:10">
+            </tr>
+            <tr> 
+                <td id="ex" colspan="2">
+                    <input type="hidden" name="action_e" value="Add_New"> 
+                    <p style="font-size: 9; color:red; text-align: left">*为必填字段</p>
+                    <input type="button" onclick="DoSave();" name="Submit" value=" 提 交 " class="input1" style="cursor:pointer">
+                    <input type="reset" name="Submit2" value=" 重 写 " class="input1" style="cursor:pointer" > 
+                </td>
+            </tr>
+        </form>
+        </table>
+        <SCRIPT LANGUAGE="JavaScript">
+            function checkForm(){
+                var email   =  document.getElementById('email').value;var tip3 = "";
+                var subject =  document.getElementById('title').value;var tip5 = "";
+                var text    =  document.getElementById('words').value;var tip6 = "";
+                var file    =  document.getElementById('files').value;
+
+                if( email == "" ) tip3 = "邮箱地址不能为空";
+                    else{  if(!/^([0-9a-zA-Z_]{5,12}@(163|126|qq|yahoo|gmail|sina|QQ)\.(com|com\.cn|cn|la))$/.test(email)) 
+                            tip3 = "邮箱地址格式不正确"; }
+
+                if( subject == "" ) tip5 = "主题不能为空";
+                if( text == "" ) tip6 = "留言内容不能为空";
+                if( file == "" ) file="无";
+                    else file = file.substring( file.lastIndexOf('\\')+1);
+                /*if( tip1 == "" && tip2 == "" && tip3 == "" && tip4 == "" && tip5 == "" && tip6 == "" ) 
+                {    if( confirm( "姓名:  " + name + "\n性别:  " + sex + "\n手机:  " + phone + "\nQQ:  " + qq + "\n个人主页:  " + page
+                             + "\n电子邮箱:  " + email + "\n留言主题:  " + subject + "\n留言内容:  " + text +"\n附件:  " + file ) ) 
+                        return true; }
+                else {  alert( tip1 + "\n" + tip2 + "\n" + tip3 + "\n" + tip4 + "\n" + tip5 + "\n" + tip6 ); return false; }*/
+                        return true;
+            }
+            function DoSave(){
+                if( checkForm() ){
+                    alert( "留言成功！" );
+                    //document.form.action="Message.php";
+                    //document.form.enctype = "multipart/form-data";
+                    //document.form.submit();
+                }
+            }
+        </SCRIPT>
+    </BODY>
+</HTML>
